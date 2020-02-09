@@ -8,7 +8,6 @@ import com.uhasoft.guard.context.UserThreadLocal;
 import com.uhasoft.guard.demo.mybatis.entity.Order;
 import com.uhasoft.guard.demo.mybatis.entity.Response;
 import com.uhasoft.guard.demo.mybatis.mapper.OrderMapper;
-import com.uhasoft.guard.entity.Limitation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -55,13 +54,13 @@ public class OrderController extends BaseController<Order> {
     return orderMapper.findAll(pageNum, pageSize);
   }
   @GetMapping("id/{id}")
-  public Response<List<Limitation>> findById(@PathVariable String id){
+  public Response<List<String>> findById(@PathVariable String id){
     return Response.success(UserThreadLocal.getLimitation());
   }
 
   @Retrieve
   @PostMapping("search")
-  public Response<List<Limitation>> search(@RequestBody Map<String, String> searchBean){
+  public Response<List<String>> search(@RequestBody Map<String, String> searchBean){
     return Response.success(UserThreadLocal.getLimitation());
   }
 
@@ -72,7 +71,7 @@ public class OrderController extends BaseController<Order> {
    */
   @RightType("deliver")
   @PutMapping("id/{id}")
-  public Response<List<Limitation>> deliver(@PathVariable String id){
+  public Response<List<String>> deliver(@PathVariable String id){
     return Response.success(UserThreadLocal.getLimitation());
   }
 }

@@ -3,100 +3,60 @@
     "name": "r-order-shanghai",
     "resource":"order",
     "type": "Retrieve",
-    "limitation": {
-      "left": "area",
-      "operator": "=",
-      "right": "'shanghai'"
-    }
+    "limitation": "area = 'shanghai'"
   },
   {
     "name": "r-order-hangzhou",
     "resource":"order",
     "type": "Retrieve",
-    "limitation": {
-      "left": "area",
-      "operator": "=",
-      "right": "'hangzhou'"
-    }
+    "limitation": "area = 'hangzhou'"
   },
   {
     "name": "c-order-shanghai",
     "resource":"order",
     "type": "Create",
-    "limitation": {
-      "left": "area",
-      "operator": "=",
-      "right": "'shanghai'"
-    }
+    "limitation": "area = 'shanghai'"
   },
   {
     "name": "c-order-hangzhou",
     "resource":"order",
     "type": "Create",
-    "limitation": {
-      "left": "area",
-      "operator": "=",
-      "right": "'hangzhou'"
-    }
+    "limitation": "area = 'hangzhou'"
   },
   {
     "name": "deliver-order-shanghai",
     "resource":"order",
     "type": "Deliver",
-    "limitation": {
-      "left": "area",
-      "operator": "=",
-      "right": "'shanghai'"
-    }
+    "limitation": "area = 'shanghai'"
   },
   {
     "name": "deliver-order-hangzhou",
     "resource":"order",
     "type": "Deliver",
-    "limitation": {
-      "left": "area",
-      "operator": "=",
-      "right": "'hangzhou'"
-    }
+    "limitation": "area = 'hangzhou'"
   },
   {
     "name": "r-insurance-shanghai",
     "resource":"insurance",
     "type": "Retrieve",
-    "limitation": {
-      "left": "area",
-      "operator": "=",
-      "right": "'shanghai'"
-    }
+    "limitation": "area = 'shanghai'"
   },
   {
     "name": "r-insurance-hangzhou",
     "resource":"insurance",
     "type": "Retrieve",
-    "limitation": {
-      "left": "area",
-      "operator": "=",
-      "right": "'hangzhou'"
-    }
+    "limitation": "area = 'hangzhou'"
   },
   {
     "name": "c-insurance-shanghai",
     "resource":"insurance",
     "type": "Create",
-    "limitation": {
-      "left": "area",
-      "operator": "=",
-      "right": "'shanghai'"
-    }
+    "limitation": "area = 'shanghai'"
   },
   {
     "name": "c-insurance-hangzhou",
     "resource":"insurance",
     "type": "Create",
-    "limitation": {
-      "left": "area",
-      "operator": "=",
-      "right": "'hangzhou'"
-    }
+    "limitation": "area = 'hangzhou'"
   }
 ]

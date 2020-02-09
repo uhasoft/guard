@@ -1,6 +1,5 @@
 package com.uhasoft.guard.context;
 
-import com.uhasoft.guard.entity.Limitation;
 import com.uhasoft.guard.entity.User;
 
 import java.util.List;
@@ -25,7 +24,7 @@ public class UserThreadLocal {
     currentUser.get().setRightType(type);
   }
 
-  public static List<Limitation> getLimitation(){
+  public static List<String> getLimitation(){
     return currentUser.get().getLimitation();
   }
 }

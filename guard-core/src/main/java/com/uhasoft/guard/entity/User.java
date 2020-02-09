@@ -37,7 +37,7 @@ public class User {
     return allButNonDuplicated;
   }
 
-  public List<Limitation> getLimitation(String type, String resource) {
+  public List<String> getLimitation(String type, String resource) {
     return getRights().stream()
         .filter(p -> p.getType().equalsIgnoreCase(type) && p.getResource().equalsIgnoreCase(resource))
         .map(Right::getLimitation)

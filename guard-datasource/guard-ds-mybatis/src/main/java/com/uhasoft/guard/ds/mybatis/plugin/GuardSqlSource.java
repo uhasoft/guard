@@ -1,15 +1,11 @@
 package com.uhasoft.guard.ds.mybatis.plugin;
 
 import com.uhasoft.guard.context.UserThreadLocal;
-import com.uhasoft.guard.entity.Limitation;
 import net.sf.jsqlparser.JSQLParserException;
 import net.sf.jsqlparser.expression.Expression;
-import net.sf.jsqlparser.expression.StringValue;
 import net.sf.jsqlparser.expression.operators.conditional.AndExpression;
 import net.sf.jsqlparser.expression.operators.conditional.OrExpression;
-import net.sf.jsqlparser.expression.operators.relational.EqualsTo;
 import net.sf.jsqlparser.parser.CCJSqlParserUtil;
-import net.sf.jsqlparser.schema.Column;
 import net.sf.jsqlparser.statement.Statement;
 import net.sf.jsqlparser.statement.select.PlainSelect;
 import net.sf.jsqlparser.statement.select.Select;
@@ -54,16 +50,14 @@ public class GuardSqlSource implements SqlSource {
         Select select = (Select)statement;
         PlainSelect plainSelect = (PlainSelect) select.getSelectBody();
         Expression where = plainSelect.getWhere();
-        List<Limitation> limitations = UserThreadLocal.getLimitation();
+        List<String> limitations = UserThreadLocal.getLimitation();
         Expression expression = null;
-        for (Limitation limitation : limitations) {
-          EqualsTo equalsTo = new EqualsTo();
-          equalsTo.setLeftExpression(new Column(limitation.getLeft()));
-          equalsTo.setRightExpression(new StringValue(limitation.getRight()));
+        for (String limitation : limitations) {
+          Expression condition = CCJSqlParserUtil.parseCondExpression(limitation);
           if(expression == null){
-            expression = equalsTo;
+            expression = condition;
           } else {
-            expression = new OrExpression(expression, equalsTo);
+            expression = new OrExpression(expression, condition);
           }
         }
         if(where == null){
@@ -90,9 +84,9 @@ public class GuardSqlSource implements SqlSource {
    @return 加入权限的sql
    */
   public String getPageSql(String sql) {
-    List<Limitation> limitations = UserThreadLocal.getLimitation();
+    List<String> limitations = UserThreadLocal.getLimitation();
     if(!limitations.isEmpty()){
-      String expression = String.join(" or ", limitations.toString());
+      String expression = String.join(" or ", limitations);
       return sql + " where " + expression;
     }
     return sql;
