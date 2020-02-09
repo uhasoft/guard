@@ -1,5 +1,6 @@
 package com.uhasoft.guard.demo.mybatis.configuration;
 
+import com.github.pagehelper.PageInterceptor;
 import com.mysql.jdbc.Driver;
 import com.uhasoft.guard.demo.mybatis.mapper.OrderMapper;
 import com.uhasoft.guard.ds.mybatis.plugin.GuardMybatisPlugin;
@@ -21,8 +22,8 @@ public class MybatisAutoConfiguration {
   public ConfigurationCustomizer mybatisConfigurationCustomizer() {
     return configuration -> {
       configuration.addMapper(OrderMapper.class);
+      configuration.addInterceptor(new PageInterceptor());
       configuration.addInterceptor(new GuardMybatisPlugin());
-//      configuration.addInterceptor(new PageHelper());
     };
   }
 
