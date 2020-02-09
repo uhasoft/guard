@@ -66,11 +66,11 @@
  #### 模型
  * 基类BaseEntity，所有模型的父类，这是我的惯例，可以将通用的字段下沉到该类，好处是显而易见的。
  
- - 子类无须重复定义，简单明了却又指责明确，
- - 可以通过使用instanceof来判断是否本项目模型，会很受用
- - Mapper和Service的基类可以对BaseEntity中定义的属性做些通用的设置，如创建时设置id、createdAt等，修改时设置lastModifiedAt、version等
- - 通过范型，将通用方法直接下沉到BaseMapper和BaseService，该范型可以定义为T extends BaseEntity
- - 好处多多，不胜枚举，强烈建议创建模型基类
+   * 子类无须重复定义，简单明了却又指责明确，
+   * 可以通过使用instanceof来判断是否本项目模型，会很受用
+   * Mapper和Service的基类可以对BaseEntity中定义的属性做些通用的设置，如创建时设置id、createdAt等，修改时设置lastModifiedAt、version等
+   * 通过范型，将通用方法直接下沉到BaseMapper和BaseService，该范型可以定义为T extends BaseEntity
+   * 好处多多，不胜枚举，强烈建议创建模型基类
  
  * Order类模拟保险业务订单，当前属性不多，用到几个加几个
  * Policy类模拟保险业务保单，订单与保单的关系为一对多关系
