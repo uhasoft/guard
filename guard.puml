@@ -1,0 +1,41 @@
+@startuml
+
+Right }|- Resource : "多对一"
+Role }|-|{ Right : 多对多
+User }|-|{ Role : 多对多
+
+class Resource {
+
+}
+note top of Resource
+资源，每个资源可自定义多个权限
+资源本身不依赖权限
+end note
+
+class Right {
+}
+note bottom of Right
+权限，权限一定作用于资源，
+理论上可以自定义无数个，如：在订单资源上的修改状态权限
+如果没有自定义，系统默认可通过SpringMVC的
+请求方法获取，如Get表示查询，Put表示修改
+end note
+
+class Role {
+}
+note top of Role
+角色，角色中包含多个权限
+也包含多个用户，该角色上的用户同时拥有该角色上的所有权限
+end note
+
+class User {
+}
+note bottom of User
+用户，所拥有的权限来自于该用户被赋予的
+角色，取并集，如角色A上有权限1、2，
+角色B上有权限2 、3，
+而当用户同时拥有A、B角色时，
+该用户就拥有了1、2、3权限
+end note
+
+@enduml

@@ -9,6 +9,8 @@
  
  ## 原理介绍
  
+<img src="guard.png" width="759" height="316"  alt="关系图"/>
+
  ### @GuardResource注解
  GuardResource注解定义资源，它的含义与Restful提倡的资源同义，一般置于Controller类上，以表示该类中定义的接口都需要在该资源上拥有权限，如下代码：
  ```java
