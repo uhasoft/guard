@@ -60,6 +60,34 @@
  
  更多的测试大家可以自行研究下几个json，也可以写更多的Controller来测试。
  
+ ### Demo说明
+ 虽然这只是一个Demo，但我希望每一份代码有价值，因此以非常规范的方式开发，简单模拟保险业务。
+ 
+ #### 模型
+ * 基类BaseEntity，所有模型的父类，这是我的惯例，可以将通用的字段下沉到该类，好处是显而易见的。
+ 
+ - 子类无须重复定义，简单明了却又指责明确，
+ - 可以通过使用instanceof来判断是否本项目模型，会很受用
+ - Mapper和Service的基类可以对BaseEntity中定义的属性做些通用的设置，如创建时设置id、createdAt等，修改时设置lastModifiedAt、version等
+ - 通过范型，将通用方法直接下沉到BaseMapper和BaseService，该范型可以定义为T extends BaseEntity
+ - 好处多多，不胜枚举，强烈建议创建模型基类
+ 
+ * Order类模拟保险业务订单，当前属性不多，用到几个加几个
+ * Policy类模拟保险业务保单，订单与保单的关系为一对多关系
+ 
+ #### Mapper
+ 目前没有BaseMapper，不是不需要，而是实现有一定困难，因为在BaseMapper中实现一个findById的通用方法，表名是动态的，而这动态表名的比较困难，当前不是主要问题，可以延后实现。
+ 
+ - OrderMapper是订单的Mapper类，实现的不是很通用，将来重构
+ - PolicyMapper是保单的Mapper类
+ 
+ #### Service
+ 延后实现
+ 
+ #### Controller
+ * BaseController实现大部分通用逻辑，时间长了，就会越来越发现BaseController的作用，初期可以置为空
+ * OrderController实现订单特有的功能
+ 
  ## RoadMap
  
   * 用户体验：对于一个及其规范的项目，所有的Controller可能都会有明确的继承关系和范型设定，如OrderController -> BaseController，
