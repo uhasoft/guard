@@ -1,26 +1,18 @@
 package com.uhasoft.guard.demo.mybatis.mapper;
 
-import com.github.pagehelper.Page;
 import com.uhasoft.guard.demo.mybatis.entity.Order;
-import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
 
 /**
  * @author Weihua
  * @since 1.0.0
  */
 @Mapper
-public interface OrderMapper {
+public interface OrderMapper extends BaseMapper<Order>{
 
-  @Select("select * from t_order o where o.id = #{id}")
-  Order findById(@Param("id") String id);
 
-  @Select("select * from t_order where deleted = false or (deleted = true and version > 0)")
-  Page<Order> findAll(@Param("pageNum") int pageNum, @Param("PageSize") int PageSize);
+  default String getTableName(){
+    return "t_order";
+  }
 
-  @Insert("insert into t_order(id, createdBy, createdAt, lastModifiedBy, lastModifiedAt, version, deleted, area) " +
-      "values(#{o.id}, #{o.createdBy}, #{o.createdAt}, #{o.lastModifiedBy}, #{o.lastModifiedAt}, #{o.version}, #{o.deleted}, #{o.area})")
-  int insert(@Param("o") Order order);
 }

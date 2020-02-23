@@ -2,7 +2,7 @@
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/a09d978f648643648f9f5676b575b032)](https://app.codacy.com/manual/vipweihua/guard?utm_source=github.com&utm_medium=referral&utm_content=vipweihua/guard&utm_campaign=Badge_Grade_Dashboard)
 
- ## 目的
+ ## 初衷与目的
  Guard可以通过注解实现用户对接口数据的过滤及访问控制。
  开发阶段，只需要定义资源（Resource）及访问接口需要的权限（Right）；
  用户、角色、权限三者的关系可以根据配置控制，这种配置是事后的，可以json、配置中心、管理平台完成。

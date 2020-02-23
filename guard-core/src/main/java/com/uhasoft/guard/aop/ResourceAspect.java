@@ -76,7 +76,7 @@ public class ResourceAspect {
       "|| @annotation(org.springframework.web.bind.annotation.PutMapping)" +
       "|| @annotation(org.springframework.web.bind.annotation.DeleteMapping)")
   public void resourcePointcut(){
-    logger.info("Nothing needed here.");
+
   }
 
   @Around("resourcePointcut()")
